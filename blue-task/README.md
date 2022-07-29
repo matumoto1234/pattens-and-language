@@ -2,7 +2,7 @@
 
 ## ❓ What is this
 
-入力された文の XXX に次の単語のうち、何が入るかを解析してくれます
+It analyzes the "XXX" in the input sentence to determine what of the following words should be in the "XXX".
 
 - anybody
 - somebody
