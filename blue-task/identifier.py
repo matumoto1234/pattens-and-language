@@ -39,10 +39,11 @@ class Identifier:
         return new_words
 
 
+    # str.capitalize()を使うと'Does I?'->'Does i?'みたいに途中の大文字が変更されるので自作
+    # 最初の文字を大文字にするだけ
     def __capitalize(self, s: str) -> str:
         if not s:
             return s
-
 
         return s[0].upper() + s[1:len(s)]
 
@@ -52,16 +53,18 @@ class Identifier:
             joined_str = ' '.join(self.__replace_list_str(words, 'XXX', 'nobody'))
             return [self.__capitalize(joined_str)]
 
-        result = []
+        # 最初の行に出力すると左側にずれるので最初に改行
+        result = ['\n']
+
         joined_str = ' '.join(self.__replace_list_str(words, 'XXX', 'everybody'))
-        result.append(self.__capitalize(joined_str))
+        result.append(self.__capitalize(joined_str) + '\n')
 
         if self.__is_affirmative_sentence(words):
             joined_str = ' '.join(self.__replace_list_str(words, 'XXX', 'somebody'))
-            result.append(self.__capitalize(joined_str))
+            result.append(self.__capitalize(joined_str) + '\n')
 
         if self.__is_negative_or_questionable_sentence(words):
             joined_str = ' '.join(self.__replace_list_str(words, 'XXX', 'anybody'))
-            result.append(self.__capitalize(joined_str))
+            result.append(self.__capitalize(joined_str) + '\n')
 
         return result
